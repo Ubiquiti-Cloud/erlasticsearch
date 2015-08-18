@@ -36,7 +36,7 @@
 
 -export([insert_doc/5, insert_doc/6]).
 -export([update_doc/5, update_doc/6]).
--export([get_doc/4, get_doc/5]).
+-export([get_doc/4, get_doc/5, get_doc/6]).
 -export([mget_doc/2, mget_doc/3, mget_doc/4]).
 -export([delete_doc/4, delete_doc/5]).
 -export([search/4, search/5]).
@@ -279,7 +279,11 @@ get_doc(PoolName, Index, Type, Id) when is_binary(Index), is_binary(Type) ->
 
 -spec get_doc(pool_name(), index(), type(), id(), params()) -> response().
 get_doc(PoolName, Index, Type, Id, Params) when is_binary(Index), is_binary(Type), is_list(Params)->
-    pool_call(PoolName, {get_doc, Index, Type, Id, Params}, ?DEFAULT_TIMEOUT).
+    get_doc(PoolName, Index, Type, Id, Params, ?DEFAULT_TIMEOUT).
+
+-spec get_doc(pool_name(), index(), type(), id(), params(), integer()) -> response().
+get_doc(PoolName, Index, Type, Id, Params, Timeout) when is_binary(Index), is_binary(Type), is_list(Params), is_integer(Timeout) ->
+    pool_call(PoolName, {get_doc, Index, Type, Id, Params}, Timeout).
 
 -spec mget_doc(pool_name(), doc()) -> response().
 mget_doc(PoolName, Doc) when (is_binary(Doc) orelse is_list(Doc)) ->
