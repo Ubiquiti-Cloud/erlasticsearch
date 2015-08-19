@@ -1,21 +1,15 @@
-%%%-------------------------------------------------------------------
 %%% @author Mahesh Paolini-Subramanya <mahesh@dieswaytoofast.com>
 %%% @copyright (C) 2013 Mahesh Paolini-Subramanya
-%%% @doc type definitions and records.
 %%% @end
 %%%
 %%% This source file is subject to the New BSD License. You should have received
 %%% a copy of the New BSD license with this software. If not, it can be
 %%% retrieved from: http://www.opensource.org/licenses/bsd-license.php
-%%%-------------------------------------------------------------------
 -module(erlasticsearch_SUITE).
--author('Mahesh Paolini-Subramanya <mahesh@dieswaytoofast.com>').
 
-% TODO: Only import what is needed.
 -include_lib("proper/include/proper.hrl").
 -include_lib("common_test/include/ct.hrl").
 
-% TODO: Only export what is needed.
 -compile(export_all).
 
 -define(CHECKSPEC(M,F,N), true = proper:check_spec({M,F,N})).

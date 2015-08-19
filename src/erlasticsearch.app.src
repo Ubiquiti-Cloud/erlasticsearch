@@ -1,13 +1,10 @@
-%%%-------------------------------------------------------------------
 %%% @author Mahesh Paolini-Subramanya <mahesh@dieswaytoofast.com>
 %%% @copyright (C) 2013 Mahesh Paolini-Subramanya
-%%% @doc ElasticSearch erlang thrift interface
 %%% @end
 %%%
 %%% This source file is subject to the New BSD License. You should have received
 %%% a copy of the New BSD license with this software. If not, it can be
 %%% retrieved from: http://www.opensource.org/licenses/bsd-license.php
-%%%-------------------------------------------------------------------
 {application, erlasticsearch,
  [
   {description, "thrift based elasticsearch"},
@@ -20,7 +17,6 @@
                   compiler,
                   syntax_tools,
                   sasl,
-%                  lager,
                   poolboy,
                   thrift,
                   quintana

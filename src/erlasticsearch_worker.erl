@@ -1,4 +1,3 @@
-% TODO: Logging
 -module(erlasticsearch_worker).
 
 -behaviour(gen_server).
