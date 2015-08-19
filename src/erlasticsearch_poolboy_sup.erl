@@ -1,29 +1,21 @@
-%%%-------------------------------------------------------------------
 %%% @author Mahesh Paolini-Subramanya <mahesh@dieswaytoofast.com>
 %%% @copyright (C) 2013 Mahesh Paolini-Subramanya
-%%% @doc Root Supervisor for erlasticsearch
 %%% @end
 %%%
 %%% This source file is subject to the New BSD License. You should have received
 %%% a copy of the New BSD license with this software. If not, it can be
 %%% retrieved from: http://www.opensource.org/licenses/bsd-license.php
-%%%-------------------------------------------------------------------
 -module(erlasticsearch_poolboy_sup).
--author('Mahesh Paolini-Subramanya <mahesh@dieswaytoofast.com>').
 
 -behaviour(supervisor).
 
 -include("erlasticsearch.hrl").
 
-%% API
 -export([start_link/0]).
 -export([start_pool/3]).
 -export([stop_pool/1]).
 
-%% Supervisor callbacks
 -export([init/1]).
-
--define(SERVER, ?MODULE).
 
 -define(WORKER(Restart, Module, Args), {Module, {Module, start_link, Args}, Restart, 5000, worker, [Module]}).
 -define(SUPERVISOR(Restart, Module, Args), {Module, {Module, start_link, Args}, Restart, 5000, supervisor, [Module]}).
@@ -39,13 +31,13 @@ start_link() ->
 start_pool(PoolName, PoolOptions, ConnectionOptions) when is_list(PoolOptions),
                                                           is_list(ConnectionOptions) ->
     PoolSpec = pool_spec(PoolName, PoolOptions, ConnectionOptions),
-    supervisor:start_child(?SERVER, PoolSpec).
+    supervisor:start_child(?MODULE, PoolSpec).
 
 
 -spec stop_pool(pool_name()) -> ok | error().
 stop_pool(PoolName) ->
-    supervisor:terminate_child(?SERVER, PoolName),
-    supervisor:delete_child(?SERVER, PoolName).
+    supervisor:terminate_child(?MODULE, PoolName),
+    supervisor:delete_child(?MODULE, PoolName).
 
 
 -spec init(Args :: term()) -> {ok, {{RestartStrategy :: supervisor:strategy(), MaxR :: non_neg_integer(), MaxT :: non_neg_integer()},

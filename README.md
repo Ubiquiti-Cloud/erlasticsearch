@@ -39,20 +39,6 @@ Add this as a rebar dependency to your project.
 1. Profit
 
 
-WARNING
-============
-__**THE TESTS WILL CREATE AND DELETE INDICES IN WHATEVER ELASTICSEARCH INSTANCE YOU POINT THE CLIENT AT**__
-
-__**THE TESTS WILL CREATE AND DELETE INDICES IN WHATEVER ELASTICSEARCH INSTANCE YOU POINT THE CLIENT AT**__
-
-__**THE TESTS WILL CREATE AND DELETE INDICES IN WHATEVER ELASTICSEARCH INSTANCE YOU POINT THE CLIENT AT**__
-
-__**!!!!!!!SERIOUSLY!!!!!!**__
-
-
-__**YOU HAVE BEEN WARNED**__
-
-
 TL;DR
 ============
 
@@ -85,10 +71,6 @@ TL;DR
 
 Details
 ============
-*[Supervisor tree diagram][sup_diagram]:*
-
-[sup_diagram]: https://github.com/dieswaytoofast/erlasticsearch/blob/master/supervision_tree.jpg
-
 
 Pool Management
 -----
